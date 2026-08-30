@@ -11,3 +11,28 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User { 
+  id            Int     @id @default(autoincrement()) 
+  name          String
+  time          Int
+  characters    Character[]
+  isFinished    Boolean @default(false)
+  stopwatch     Stopwatch?
+}
+
+model Character {
+  id            Int     @id @default(autoincrement()) 
+  name          String
+  found         Boolean @default(false)
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+}
+
+model Stopwatch {
+  id            Int @id @default(autoincrement())
+  startTime     Int
+  endTime       Int
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int @unique
+}

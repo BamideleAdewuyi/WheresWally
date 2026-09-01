@@ -1,4 +1,8 @@
 .largeCharacter {
-    width: 4em;
-    height: 10em;
+    width: 15em;
+    height: 25em;
+}
+
+.largeCharacterName {
+    text-align: center;
 }

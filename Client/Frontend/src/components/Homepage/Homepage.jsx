@@ -3,7 +3,8 @@ import LargeCharacter from "../LargeCharacter/LargeCharacter";
 import Wally from "../../assets/Wally.png";
 import Odlaw from "../../assets/Odlaw.webp";
 import Wanda from "../../assets/Wanda.webp";
-import Whitebeard from "../../assets/Whitebeard.webp"
+import Whitebeard from "../../assets/Whitebeard.webp";
+import styles from "./Homepage.module.css";
 
 function Homepage() {
     const characters = [
@@ -27,11 +28,10 @@ function Homepage() {
         <>
             <h1>Where's Wally?</h1>
             <h2>Find all these characters, as fast as you can</h2>
-            <div>
+            <div className={styles.largeCharactersContainer}>
                 {characters.map((character, index) => (
-                    <div>
-                        <LargeCharacter key={index} src={character.src} name={character.name} />
-                        <h3>{character.name}</h3>
+                    <div key={index}>
+                        <LargeCharacter src={character.src} name={character.name} />
                     </div>
                 ))}
             </div>

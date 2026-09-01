@@ -35,7 +35,7 @@ function Homepage() {
                     </div>
                 ))}
             </div>
-            <Link>Start Game</Link>
+            <Link to="/play">Start Game</Link>
         </div>
     )
 }

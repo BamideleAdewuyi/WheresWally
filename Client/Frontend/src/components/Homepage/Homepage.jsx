@@ -25,7 +25,7 @@ function Homepage() {
             src: Whitebeard,
         }];
     return(
-        <>
+        <div className={styles.homepageContainer}>
             <h1>Where's Wally?</h1>
             <h2>Find all these characters, as fast as you can</h2>
             <div className={styles.largeCharactersContainer}>
@@ -36,7 +36,7 @@ function Homepage() {
                 ))}
             </div>
             <Link>Start Game</Link>
-        </>
+        </div>
     )
 }
 

@@ -1,0 +1,22 @@
+.gameContainer {
+    background-image: url("../../assets/wheres-wally.jpg");
+    padding: 0;
+    margin:0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+@media (max-width: 1023px) {
+    .gameContainer {
+        min-width: 1500px;
+        min-height: 1396px;
+    }
+}
+
+@media (1024px <= width) {
+    .gameContainer {
+        aspect-ratio: 2000 / 1861;
+        width: 100%;
+    }
+}

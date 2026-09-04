@@ -4,8 +4,11 @@ import Wally from "../../assets/Wally.png";
 import Odlaw from "../../assets/Odlaw.webp";
 import Wanda from "../../assets/Wanda.webp";
 import Whitebeard from "../../assets/Whitebeard.webp";
+import { useState, useRef } from "react";
 
 function TargetBox() {
+    const [open, setOpen] = useState(false);
+    const dialogRef = useRef();
     const characters = [
             {   
                 name: "Wally",
@@ -25,7 +28,7 @@ function TargetBox() {
             }];
     return(
         <div className={styles.targetBoxWrapper}>
-            <dialog className={styles.targetBoxDialog}>
+            <dialog ref={dialogRef} className={styles.targetBoxDialog}>
                 {characters.map((character, index) => (
                     <div key={index}>
                         <SmallCharacter src={character.src} name={character.name} />

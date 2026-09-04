@@ -7,7 +7,7 @@ import Whitebeard from "../../assets/Whitebeard.webp";
 import { useState, useRef } from "react";
 
 function TargetBox() {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const dialogRef = useRef();
     const characters = [
             {   
@@ -26,6 +26,16 @@ function TargetBox() {
                 name: "Whitebeard",
                 src: Whitebeard,
             }];
+    
+    useEffect(() => {
+        if (dialogRef.current) {
+            if (open) {
+                dialogRef.current.showModal();
+            } else {
+                dialogRef.current.close();
+            }
+        }
+    }, [open])
     return(
         <div className={styles.targetBoxWrapper}>
             <dialog ref={dialogRef} className={styles.targetBoxDialog}>

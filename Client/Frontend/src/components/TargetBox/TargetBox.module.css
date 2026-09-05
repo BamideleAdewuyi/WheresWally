@@ -3,4 +3,5 @@
     grid-template-columns: repeat(2, 1fr);
     width: 10em;
     height: 10em;
+    position: absolute;
 }

@@ -6,8 +6,8 @@ import Wanda from "../../assets/Wanda.webp";
 import Whitebeard from "../../assets/Whitebeard.webp";
 import { useState, useRef, useEffect } from "react";
 
-function TargetBox() {
-    const [open, setOpen] = useState(false);
+function TargetBox({ isOpen }) {
+    const [open, setOpen] = useState(isOpen);
     const dialogRef = useRef();
     const characters = [
             {   

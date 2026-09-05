@@ -38,7 +38,7 @@ function Game() {
     return(
         <div className={styles.screenWrapper}>
             <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>
-                <TargetBox open={open}/>
+                <TargetBox open={open} x={boxPosition.x} y={boxPosition.y}/>
             </div>
         </div>
     )

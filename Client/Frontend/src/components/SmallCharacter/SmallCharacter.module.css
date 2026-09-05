@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+.smallCharacterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smallCharacter {
+    width: 2em;
+    height: 3em;
+}
+
+.smallCharacterName {
+    font-size: small;
+    text-align: center;
+}

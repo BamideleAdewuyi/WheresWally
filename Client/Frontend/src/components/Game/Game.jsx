@@ -25,6 +25,8 @@ function Game() {
     }, []);
 
     function handleClick(e) {
+        setOpen(true);
+
         const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
         const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
 
@@ -35,7 +37,7 @@ function Game() {
     return(
         <div className={styles.screenWrapper}>
             <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>
-                <TargetBox isOpen={open}/>
+                <TargetBox open={open}/>
             </div>
         </div>
     )

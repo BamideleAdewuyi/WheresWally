@@ -26,7 +26,11 @@ function Game() {
     }, []);
 
     function handleClick(e) {
-        setOpen(true);
+        if (open) {
+            setOpen(false);
+        } else {
+            setOpen(true);
+        }
 
         const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
         const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
@@ -34,6 +38,7 @@ function Game() {
         const xCoord = Math.floor(x / dimensions.width * 10000)/100;
         const yCoord = Math.floor(y / dimensions.height * 10000)/100;
         console.log(xCoord, yCoord)
+        setBoxPosition({ x: e.clientX, y: e.clientY });
     }
     return(
         <div className={styles.screenWrapper}>

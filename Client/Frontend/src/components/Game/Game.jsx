@@ -5,6 +5,7 @@ import TargetBox from "../TargetBox/TargetBox";
 function Game() {
     const gameContainerRef = useRef(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         if (gameContainerRef.current) {
@@ -34,7 +35,7 @@ function Game() {
     return(
         <div className={styles.screenWrapper}>
             <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>
-                <TargetBox />
+                <TargetBox isOpen={open}/>
             </div>
         </div>
     )

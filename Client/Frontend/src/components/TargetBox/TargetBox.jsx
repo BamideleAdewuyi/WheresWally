@@ -40,9 +40,7 @@ function TargetBox() {
         <div className={styles.targetBoxWrapper}>
             <dialog ref={dialogRef} className={styles.targetBoxDialog}>
                 {characters.map((character, index) => (
-                    <div key={index}>
-                        <SmallCharacter src={character.src} name={character.name} />
-                    </div>
+                    <SmallCharacter key={index} src={character.src} name={character.name} />
                 ))}
             </dialog>
         </div>

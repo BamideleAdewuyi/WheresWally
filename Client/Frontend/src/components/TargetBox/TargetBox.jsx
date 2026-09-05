@@ -37,7 +37,7 @@ function TargetBox({ open, x, y }) {
     }, [open])
     return(
         <div className={styles.targetBoxWrapper}>
-            <dialog ref={dialogRef} className={styles.targetBoxDialog}>
+            <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.targetBoxDialog}>
                 {characters.map((character, index) => (
                     <SmallCharacter key={index} src={character.src} name={character.name} />
                 ))}

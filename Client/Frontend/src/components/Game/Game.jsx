@@ -1,5 +1,6 @@
 import styles from "./Game.module.css";
 import { useRef, useEffect, useState } from "react";
+import TargetBox from "../TargetBox/TargetBox";
 
 function Game() {
     const gameContainerRef = useRef(null);
@@ -33,6 +34,7 @@ function Game() {
     return(
         <div className={styles.screenWrapper}>
             <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>
+                <TargetBox />
             </div>
         </div>
     )

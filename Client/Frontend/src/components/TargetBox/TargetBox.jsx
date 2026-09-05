@@ -4,10 +4,10 @@ import Wally from "../../assets/Wally.png";
 import Odlaw from "../../assets/Odlaw.webp";
 import Wanda from "../../assets/Wanda.webp";
 import Whitebeard from "../../assets/Whitebeard.webp";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function TargetBox() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const dialogRef = useRef();
     const characters = [
             {   

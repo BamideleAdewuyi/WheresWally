@@ -5,7 +5,8 @@ import TargetBox from "../TargetBox/TargetBox";
 function Game() {
     const gameContainerRef = useRef(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
 
     useEffect(() => {
         if (gameContainerRef.current) {

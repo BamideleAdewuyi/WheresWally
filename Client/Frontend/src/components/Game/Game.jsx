@@ -7,6 +7,7 @@ function Game() {
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [open, setOpen] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
+    const [startTime, setStartTime] = useState(null);
 
     useEffect(() => {
         if (gameContainerRef.current) {
@@ -23,6 +24,14 @@ function Game() {
                 resizeObserver.disconnect();
             }
         }
+    }, []);
+
+    useEffect(() => {
+        function getStartTime() {
+            setStartTime(Date.now());
+            return;
+        }
+        getStartTime();
     }, []);
 
     function handleClick(e) {
@@ -47,6 +56,7 @@ function Game() {
     function closeBox() {
         setOpen(false);
     }
+
     return(
         <div className={styles.screenWrapper}>
             <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>

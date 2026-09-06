@@ -35,8 +35,8 @@ function Game() {
         const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
         const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
 
-        const safeWidth = window.innerWidth - 200;
-        const safeHeight = window.innerHeight - 200;
+        const safeWidth = window.innerWidth - 168;
+        const safeHeight = window.innerHeight - 168;
         const realBoxX = Math.min(safeWidth, e.clientX);
         const realBoxY = Math.min(safeHeight, e.clientY);
 

@@ -35,10 +35,15 @@ function Game() {
         const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
         const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
 
+        const safeWidth = window.innerWidth - 200;
+        const safeHeight = window.innerHeight - 200;
+        const realBoxX = Math.min(safeWidth, e.clientX);
+        const realBoxY = Math.min(safeHeight, e.clientY);
+
         const xCoord = Math.floor(x / dimensions.width * 10000)/100;
         const yCoord = Math.floor(y / dimensions.height * 10000)/100;
         console.log(xCoord, yCoord)
-        setBoxPosition({ x: e.clientX, y: e.clientY });
+        setBoxPosition({ x: realBoxX, y: realBoxY });
     }
     return(
         <div className={styles.screenWrapper}>

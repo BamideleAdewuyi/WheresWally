@@ -41,6 +41,7 @@ function TargetBox({ open, x, y }) {
                 {characters.map((character, index) => (
                     <SmallCharacter key={index} src={character.src} name={character.name} />
                 ))}
+                <button type="button">X</button>
             </dialog>
         </div>
     )

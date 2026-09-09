@@ -21,8 +21,8 @@ model User {
 model Character {
   id            Int     @id @default(autoincrement()) 
   name          String
-  minX          Int
-  maxX          Int
-  minY          Int
-  maxY          Int
+  minX          Float
+  maxX          Float
+  minY          Float
+  maxY          Float
 }

@@ -20,7 +20,7 @@ model User {
 
 model Character {
   id            Int     @id @default(autoincrement()) 
-  name          String
+  name          String  @unique
   minX          Float
   maxX          Float
   minY          Float

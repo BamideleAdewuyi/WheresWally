@@ -7,7 +7,6 @@ function Game() {
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [open, setOpen] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
-    const [startTime, setStartTime] = useState(null);
 
     useEffect(() => {
         async function getCookie() {
@@ -40,14 +39,6 @@ function Game() {
                 resizeObserver.disconnect();
             }
         }
-    }, []);
-
-    useEffect(() => {
-        function getStartTime() {
-            setStartTime(Date.now());
-            return;
-        }
-        getStartTime();
     }, []);
 
     function handleClick(e) {

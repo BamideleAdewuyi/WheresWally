@@ -10,6 +10,22 @@ function Game() {
     const [startTime, setStartTime] = useState(null);
 
     useEffect(() => {
+        async function getCookie() {
+            try {
+                const res = await fetch(`${import.meta.env.VITE_API_PORT}/start`, {
+                method: "GET",
+                headers: { "content-type": "application/json", },
+                credentials: "include",
+            });
+            } catch(err) {
+                console.log(err);
+            }
+        }
+        getCookie();
+    }, []);
+
+
+    useEffect(() => {
         if (gameContainerRef.current) {
             const resizeObserver = new ResizeObserver((entries) => {
                 for (let entry of entries) {

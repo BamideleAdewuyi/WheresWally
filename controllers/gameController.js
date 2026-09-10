@@ -1,5 +1,10 @@
 const db = require("../db/queries");
 
+async function allUsersGet(req, res) {
+    const users = await db.findAllUsers();
+    res.json({ users: users });
+};
+
 async function characterByCoordinatesPost(req, res) {
     const x = req.body.x;
     const y = req.body.y;
@@ -7,9 +12,10 @@ async function characterByCoordinatesPost(req, res) {
 
     const character = db.findCharacterByCoordinates({ x, y, name });
 
-    return character;
+    res.json({ character: character });
 };
 
 module.exports = {
     characterByCoordinatesPost,
+    allUsersGet,
 }

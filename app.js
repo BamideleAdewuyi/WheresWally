@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("node:path");
 const router = require("./routes/index.js");
+const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const app = express();
 

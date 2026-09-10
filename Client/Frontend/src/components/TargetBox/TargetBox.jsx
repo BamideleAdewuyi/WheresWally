@@ -6,7 +6,7 @@ import Wanda from "../../assets/Wanda.webp";
 import Whitebeard from "../../assets/Whitebeard.webp";
 import { useState, useRef, useEffect } from "react";
 
-function TargetBox({ open, x, y, closeBox }) {
+function TargetBox({ open, x, y, closeBox, handleClick }) {
     const dialogRef = useRef();
     const characters = [
             {   
@@ -39,7 +39,7 @@ function TargetBox({ open, x, y, closeBox }) {
         <div className={styles.targetBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.targetBoxDialog}>
                 {characters.map((character, index) => (
-                    <SmallCharacter key={index} src={character.src} name={character.name} />
+                    <SmallCharacter key={index} src={character.src} name={character.name} handleClick={handleClick} />
                 ))}
                 <button onClick={() => closeBox()} type="button">X</button>
             </dialog>

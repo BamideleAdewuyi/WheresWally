@@ -10,7 +10,7 @@ async function characterByCoordinatesPost(req, res) {
     const y = req.body.y;
     const name = req.body.name;
 
-    const character = db.findCharacterByCoordinates({ x, y, name });
+    const character =  await db.findCharacterByCoordinates({ x, y, name });
 
     res.json({ character: character });
 };

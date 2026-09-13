@@ -22,6 +22,6 @@ gameRouter.get("/start", function (req, res, next) {
 
 gameRouter.get("/allUsers", gameController.allUsersGet);
 
-gameRouter.post("/takeTurn", gameController.characterByCoordinatesPost);
+gameRouter.post("/takeTurn", gameController.takeTurnPost);
 
 module.exports = gameRouter;

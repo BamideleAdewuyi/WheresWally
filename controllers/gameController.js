@@ -6,7 +6,7 @@ async function allUsersGet(req, res) {
     res.json({ users: users });
 };
 
-async function characterByCoordinatesPost(req, res) {
+async function takeTurnPost(req, res) {
     const x = req.body.x;
     const y = req.body.y;
     const name = req.body.name;
@@ -21,6 +21,6 @@ async function characterByCoordinatesPost(req, res) {
 };
 
 module.exports = {
-    characterByCoordinatesPost,
+    takeTurnPost,
     allUsersGet,
 }

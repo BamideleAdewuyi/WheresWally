@@ -1,4 +1,5 @@
 const db = require("../db/queries");
+const jwt = require('jsonwebtoken');
 
 async function allUsersGet(req, res) {
     const users = await db.findAllUsers();
@@ -11,8 +12,12 @@ async function characterByCoordinatesPost(req, res) {
     const name = req.body.name;
 
     const character =  await db.findCharacterByCoordinates({ x, y, name });
-
-    res.json({ character: character });
+    const token = req.cookies.gameCookie;
+    const sessionData = jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ 
+        character: character,
+        sessionData: sessionData,
+    });
 };
 
 module.exports = {

@@ -80,14 +80,13 @@ function Game() {
             }
 
             const data = await res.json();
-            if (data.character) {
+            if (data.character) {                
+                console.log(`${data.character.name} found`);
 
-                
-                data.sessionData.characters[data.character.name] = true;
-
-            } else if (data.errors) {
-                setErrors(data.errors.map((error) => error.msg));
+            } else {
+                console.log("Incorrect");
             }
+            closeBox();
 
         } catch(err) {
             console.log(err);

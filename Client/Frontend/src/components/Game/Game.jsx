@@ -7,6 +7,9 @@ function Game() {
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [open, setOpen] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
+    const [errors, setErrors] = useState([]);
+    const [xGuess, setXGuess] = useState(null);
+    const [yGuess, setYGuess] = useState(null);
 
     useEffect(() => {
         async function getCookie() {
@@ -41,7 +44,7 @@ function Game() {
         }
     }, []);
 
-    function handleClick(e) {
+    function openDialog(e) {
         if (!open) {
             setOpen(true);
     
@@ -55,9 +58,40 @@ function Game() {
     
             const xCoord = Math.floor(x / dimensions.width * 10000)/100;
             const yCoord = Math.floor(y / dimensions.height * 10000)/100;
-            console.log(xCoord, yCoord)
+            setXGuess(xCoord);
+            setYGuess(yCoord);
             setBoxPosition({ x: realBoxX, y: realBoxY });
         }
+    }
+
+    async function takeTurn(name) {
+        const x = xGuess;
+        const y = yGuess;
+        const turnObj = { x, y, name };
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_PORT}/takeTurn`, {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(turnObj)
+            });
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+
+            const data = await res.json();
+            if (data.character) {
+
+                
+                data.sessionData.characters[data.character.name] = true;
+
+            } else if (data.errors) {
+                setErrors(data.errors.map((error) => error.msg));
+            }
+
+        } catch(err) {
+            console.log(err);
+        } 
     }
 
     function closeBox() {
@@ -66,8 +100,8 @@ function Game() {
 
     return(
         <div className={styles.screenWrapper}>
-            <div onClick={(e) => handleClick(e)} ref={gameContainerRef} className={styles.gameContainer}>
-                <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y}/>
+            <div onClick={(e) => openDialog(e)} ref={gameContainerRef} className={styles.gameContainer}>
+                <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn}/>
             </div>
         </div>
     )

@@ -7,7 +7,6 @@ function Game() {
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [open, setOpen] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
-    const [errors, setErrors] = useState([]);
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);
 

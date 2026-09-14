@@ -9,6 +9,7 @@ function Game() {
     const [open, setOpen] = useState(false);
     const [openGuessResultBox, setOpenGuessResultBox] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
+    const [guess, setGuess] = useState(null);
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);
 
@@ -63,6 +64,10 @@ function Game() {
             setYGuess(yCoord);
             setBoxPosition({ x: realBoxX, y: realBoxY });
         }
+    };
+
+    function openResultBox() {
+        if (!openGuessResultBox) setOpenGuessResultBox(true);
     }
 
     async function takeTurn(name) {
@@ -82,26 +87,36 @@ function Game() {
 
             const data = await res.json();
             if (data.character) {                
+                closeBox();
+                setGuess(data.character.name);
+                openResultBox();
                 console.log(`${data.character.name} found`);
 
             } else {
+                closeBox();
+                setGuess(null);
+                openResultBox();
                 console.log("Incorrect");
             }
-            closeBox();
 
         } catch(err) {
             console.log(err);
         } 
-    }
+    };
 
     function closeBox() {
         setOpen(false);
-    }
+    };
+
+    function closeGuessResultBox() {
+        setOpenGuessResultBox(false);
+    };
 
     return(
         <div className={styles.screenWrapper}>
-            <div onClick={(e) => openDialog(e)} ref={gameContainerRef} className={styles.gameContainer}>
+            <div onClick={!openGuessResultBox ? (e) => openDialog(e) : null} ref={gameContainerRef} className={styles.gameContainer}>
                 <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn}/>
+                <GuessResultBox open={openGuessResultBox} x={boxPosition.x} y={boxPosition.y} closeBox={closeGuessResultBox} character={guess}/>
             </div>
         </div>
     )

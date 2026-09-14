@@ -7,6 +7,7 @@ function Game() {
     const gameContainerRef = useRef(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [open, setOpen] = useState(false);
+    const [openGuessResultBox, setOpenGuessResultBox] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);

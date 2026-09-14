@@ -1,6 +1,7 @@
 import styles from "./Game.module.css";
 import { useRef, useEffect, useState } from "react";
 import TargetBox from "../TargetBox/TargetBox";
+import GuessResultBox from "../GuessResultBox/GuessResultBox";
 
 function Game() {
     const gameContainerRef = useRef(null);

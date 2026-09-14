@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import styles from "./GuessResultBox.module.css"
 
-function GuessResultBox({ open, closeBox, character }) {
+function GuessResultBox({ open, x, y, closeBox, character }) {
     const dialogRef = useRef();
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function GuessResultBox({ open, closeBox, character }) {
 
     return(
         <div className={styles.GuessResultBoxWrapper}>
-            <dialog ref={dialogRef} className={styles.GuessResultBoxDialog}>
+            <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GuessResultBoxDialog}>
                 {character ? 
                     <p>{character} found!</p> :
                     <p>Wrong!</p>

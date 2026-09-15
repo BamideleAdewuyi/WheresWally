@@ -39,7 +39,7 @@ async function gameOverGet(req, res) {
     const characters = sessionData.characters;
     const startTime = sessionData.startTime;
 
-    const gameOver = Object.values(characters).every(character => character = true);
+    const gameOver = Object.values(characters).every(character => character === true);
     res.json({
         gameOver: gameOver,
         startTime: startTime,

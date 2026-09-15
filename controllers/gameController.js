@@ -33,7 +33,21 @@ async function takeTurnPost(req, res) {
     });
 };
 
+async function gameOverGet(req, res) {
+    const token = req.cookies.gameCookie;
+    const sessionData = jwt.verify(token, process.env.JWT_SECRET);
+    const characters = sessionData.characters;
+    const startTime = sessionData.startTime;
+
+    const gameOver = Object.values(characters).every(character => character = true);
+    res.json({
+        gameOver: gameOver,
+        startTime: startTime,
+    });
+};
+
 module.exports = {
     takeTurnPost,
     allUsersGet,
+    gameOverGet,
 }

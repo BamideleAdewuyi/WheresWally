@@ -10,6 +10,7 @@ function Game() {
     const [openGuessResultBox, setOpenGuessResultBox] = useState(false);
     const [boxPosition, setBoxPosition] = useState({ x: null, y: null });
     const [guess, setGuess] = useState(null);
+    const [gameOver, setGameOver] = useState(false);
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);
 
@@ -103,6 +104,21 @@ function Game() {
             console.log(err);
         } 
     };
+
+    async function gameIsOver() {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_PORT}/gameOver`, {
+            method: "GET",
+            headers: { "content-type": "application/json", },
+            credentials: "include",
+        });
+
+        const data = res.json();
+        setGameOver(data.gameOver);
+        } catch(err) {
+            console.log(err);
+        };
+    }
 
     function closeBox() {
         setOpen(false);

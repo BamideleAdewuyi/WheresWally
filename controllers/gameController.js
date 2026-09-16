@@ -45,7 +45,7 @@ async function gameOverGet(req, res) {
         const gameObj = {
             characters: characters,
             startTime: startTime,
-            endTime: Date.now(),
+            time: Date.now() - startTime,
             gameOver: true,
         };
         const newToken = jwt.sign(gameObj, process.env.JWT_SECRET);

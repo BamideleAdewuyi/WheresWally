@@ -37,9 +37,22 @@ async function gameOverGet(req, res) {
     const token = req.cookies.gameCookie;
     const sessionData = jwt.verify(token, process.env.JWT_SECRET);
     const characters = sessionData.characters;
-    const startTime = sessionData.startTime;
-
+    
     const gameOver = Object.values(characters).every(character => character === true);
+    
+    if (gameOver) {
+        const startTime = sessionData.startTime;
+        const gameObj = {
+            characters: characters,
+            startTime: startTime,
+            endTime: Date.now(),
+            gameOver: true,
+        };
+        const newToken = jwt.sign(gameObj, process.env.JWT_SECRET);
+        
+        res.cookie("gameCookie", newToken, { httpOnly: true, secure: true, sameSite: 'lax' });
+        return;
+    }
     res.json({
         gameOver: gameOver,
         startTime: startTime,

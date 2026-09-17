@@ -5,6 +5,17 @@ async function findAllUsers() {
     return users;
 };
 
+async function findHighScore() {
+    const highScorer = await prisma.user.aggregate({
+        _min: {
+            time: true,
+        },
+    });
+
+    const highScore = highScorer.time;
+    return highScore;
+};
+
 async function findCharacterByCoordinates({ x, y, name }) {
     const character = await prisma.character.findFirst({
         where: { 
@@ -21,5 +32,6 @@ async function findCharacterByCoordinates({ x, y, name }) {
 
 module.exports = {
     findAllUsers,
+    findHighScore,
     findCharacterByCoordinates,
 }

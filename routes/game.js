@@ -22,6 +22,7 @@ gameRouter.get("/start", function (req, res, next) {
 });
 
 gameRouter.get("/allUsers", gameController.allUsersGet);
+gameRouter.get("/highScore", gameController.highScoreGet);
 
 gameRouter.post("/takeTurn", gameController.takeTurnPost);
 

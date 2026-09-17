@@ -16,7 +16,7 @@ function GameOverBox({ x, y }) {
                     <h2>Add your name to the leaderboard:</h2>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name"/>
-                    <button type="submit"></button>
+                    <button type="submit">Save score</button>
                     <button type="button">Go home without saving</button>
                 </form>
             </dialog>

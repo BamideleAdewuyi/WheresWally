@@ -6,6 +6,11 @@ async function allUsersGet(req, res) {
     res.json({ users: users });
 };
 
+async function highScoreGet(req, res) {
+    const highScore = await db.findHighScore();
+    res.json({ highScore: highScore });
+};
+
 async function takeTurnPost(req, res) {
     const x = req.body.x;
     const y = req.body.y;
@@ -45,4 +50,5 @@ async function takeTurnPost(req, res) {
 module.exports = {
     takeTurnPost,
     allUsersGet,
+    highScoreGet,
 }

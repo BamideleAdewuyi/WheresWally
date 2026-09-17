@@ -12,6 +12,7 @@ gameRouter.get("/start", function (req, res, next) {
             Whitebeard: false,
         },
         startTime: Date.now(),
+        gameOver: false,
     };
 
     const token = jwt.sign(gameObj, process.env.JWT_SECRET);
@@ -21,7 +22,6 @@ gameRouter.get("/start", function (req, res, next) {
 });
 
 gameRouter.get("/allUsers", gameController.allUsersGet);
-gameRouter.get("/gameOver", gameController.gameOverGet);
 
 gameRouter.post("/takeTurn", gameController.takeTurnPost);
 

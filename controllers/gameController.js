@@ -50,7 +50,7 @@ async function takeTurnPost(req, res) {
 async function timeGet(req, res) {
     const token = req.cookies.gameCookie;
     const sessionData = jwt.verify(token, process.env.JWT_SECRET);
-    const time = sessionData.sessionData.time;
+    const time = sessionData.time;
     res.json({
         time: time,
     })

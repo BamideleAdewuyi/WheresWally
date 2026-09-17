@@ -118,6 +118,9 @@ function Game() {
             <div onClick={!openGuessResultBox ? (e) => openDialog(e) : null} ref={gameContainerRef} className={styles.gameContainer}>
                 <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn}/>
                 <GuessResultBox open={openGuessResultBox} x={boxPosition.x} y={boxPosition.y} closeBox={closeGuessResultBox} character={guess}/>
+                {gameOver && 
+                    <GameOverBox x={boxPosition.x} y={boxPosition.y} />
+                }
             </div>
         </div>
     )

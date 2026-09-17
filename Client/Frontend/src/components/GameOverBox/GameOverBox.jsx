@@ -1,18 +1,12 @@
 import { useRef, useEffect } from "react";
 import styles from "./GameOverBox.module.css"
 
-function GameOverBox({ open, x, y }) {
+function GameOverBox({ x, y }) {
     const dialogRef = useRef();
 
     useEffect(() => {
-        if (dialogRef.current) {
-            if (open) {
-                dialogRef.current.showModal();
-            } else {
-                dialogRef.current.close();
-            }
-        }
-    }, [open]);
+        dialogRef.current.showModal();
+    }, []);
 
     return(
         <div className={styles.GameOverBoxWrapper}>

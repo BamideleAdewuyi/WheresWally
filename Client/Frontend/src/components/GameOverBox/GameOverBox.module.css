@@ -1,0 +1,8 @@
+.GameOverBoxDialog[open] {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 10em;
+    height: 10em;
+    position: absolute;
+}

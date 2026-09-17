@@ -90,35 +90,19 @@ function Game() {
             if (data.character) {                
                 closeBox();
                 setGuess(data.character.name);
+                setGameOver(data.sessionData.gameOver);
                 openResultBox();
-                console.log(`${data.character.name} found`);
 
             } else {
                 closeBox();
                 setGuess(null);
                 openResultBox();
-                console.log("Incorrect");
             }
 
         } catch(err) {
             console.log(err);
         } 
     };
-
-    async function gameIsOver() {
-        try {
-            const res = await fetch(`${import.meta.env.VITE_API_PORT}/gameOver`, {
-            method: "GET",
-            headers: { "content-type": "application/json", },
-            credentials: "include",
-        });
-
-        const data = res.json();
-        setGameOver(data.gameOver);
-        } catch(err) {
-            console.log(err);
-        };
-    }
 
     function closeBox() {
         setOpen(false);

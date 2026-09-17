@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import styles from "./GameOverBox.module.css"
 
-function GameOverBox({ open, x, y, time }) {
+function GameOverBox({ open, x, y }) {
     const dialogRef = useRef();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ function GameOverBox({ open, x, y, time }) {
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
                 <form onSubmit>
-                    <h1>Well done! You found everyone in {time}</h1>
+                    <h1>Well done! You found everyone in </h1>
                     <h2>Add your name to the leaderboard:</h2>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name"/>

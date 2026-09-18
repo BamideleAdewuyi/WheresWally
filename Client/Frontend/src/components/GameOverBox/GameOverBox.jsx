@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./GameOverBox.module.css"
 
-function GameOverBox({ x, y }) {
+function GameOverBox({ x, y, time }) {
     const dialogRef = useRef();
 
     function msToTime(duration) {

@@ -14,6 +14,7 @@ function Game() {
     const [gameOver, setGameOver] = useState(false);
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);
+    const [time, setTime] = useState(null);
 
     useEffect(() => {
         async function getCookie() {

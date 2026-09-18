@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./GameOverBox.module.css"
+import Error from "../Error/Error";
 
 function GameOverBox({ x, y, time }) {
     const dialogRef = useRef();

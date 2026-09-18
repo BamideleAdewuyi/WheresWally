@@ -26,5 +26,6 @@ gameRouter.get("/highScore", gameController.highScoreGet);
 gameRouter.get("/time", gameController.timeGet);
 
 gameRouter.post("/takeTurn", gameController.takeTurnPost);
+gameRouter.post("/newUser", gameController.newUserPost);
 
 module.exports = gameRouter;

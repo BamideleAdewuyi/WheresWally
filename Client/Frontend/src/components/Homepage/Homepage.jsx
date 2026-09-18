@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 import LargeCharacter from "../LargeCharacter/LargeCharacter";
 import Wally from "../../assets/Wally.png";
 import Odlaw from "../../assets/Odlaw.webp";

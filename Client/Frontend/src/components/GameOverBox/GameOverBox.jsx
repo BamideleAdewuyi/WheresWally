@@ -10,12 +10,18 @@ function GameOverBox({ x, y, time }) {
             minutes = Math.floor((duration / (1000 * 60)) % 60),
             hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-        hours = (hours < 10) ? "0" + hours : hours;
-        minutes = (minutes < 10) ? "0" + minutes : minutes;
-        seconds = (seconds < 10) ? "0" + seconds : seconds;
+        if (duration < 60000) {
+            return `${seconds}.${milliseconds} seconds!`
+        } else if (duration < 3600000 && duration < 120000) {
+            return `${minutes} minute and ${seconds}.${milliseconds} seconds!`
+        } else if (duration < 3600000) {
+            return `${minutes} minutes and ${seconds}.${milliseconds} seconds!`
+        } else {
+            return `${hours} hours, ${minutes} minutes and ${seconds}.${milliseconds} seconds!`
+        }
+    };
 
-        return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
-    }
+    const formattedTime = msToTime(Number(time));
 
     useEffect(() => {
         dialogRef.current.showModal();
@@ -25,7 +31,7 @@ function GameOverBox({ x, y, time }) {
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
                 <form onSubmit>
-                    <h1>Well done! You found everyone in </h1>
+                    <h1>Well done! You found everyone in {formattedTime}</h1>
                     <h2>Add your name to the leaderboard:</h2>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name"/>

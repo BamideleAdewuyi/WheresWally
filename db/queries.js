@@ -30,8 +30,19 @@ async function findCharacterByCoordinates({ x, y, name }) {
     return character;
 };
 
+async function createNewUser({ name, time }) {
+    const user = await prisma.user.create({
+        data: {
+            name: name,
+            time: time,
+        }
+    });
+    return user;
+};
+
 module.exports = {
     findAllUsers,
     findHighScore,
     findCharacterByCoordinates,
+    createNewUser,
 }

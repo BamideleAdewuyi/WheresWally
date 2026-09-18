@@ -4,6 +4,7 @@ import Wally from "../../assets/Wally.png";
 import Odlaw from "../../assets/Odlaw.webp";
 import Wanda from "../../assets/Wanda.webp";
 import Whitebeard from "../../assets/Whitebeard.webp";
+import Leaderboard from "../Leaderboard/Leaderboard";
 import styles from "./Homepage.module.css";
 
 function Homepage() {

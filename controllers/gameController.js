@@ -3,6 +3,12 @@ const jwt = require('jsonwebtoken');
 const { validationResult, matchedData } = require("express-validator");
 const validateUser = require("../validators/userValidator");
 
+function asyncHandler(fn) {
+  return function (req, res, next) {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+};
+
 async function allUsersGet(req, res) {
     const users = await db.findAllUsers();
     res.json({ users: users });
@@ -58,9 +64,34 @@ async function timeGet(req, res) {
     })
 };
 
+const newUserPost = [
+  validateUser,
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      })
+    }
+
+    const token = req.cookies.gameCookie;
+    const sessionData = jwt.verify(token, process.env.JWT_SECRET);
+    const time = sessionData.time;
+    
+    const { name } = matchedData(req);
+
+    
+    await db.createNewUser({ name , time});
+    return res.status(201).json({
+      msg: "User created successfully"
+    })
+  })
+];
+
 module.exports = {
     takeTurnPost,
     allUsersGet,
     highScoreGet,
     timeGet,
+    newUserPost,
 }

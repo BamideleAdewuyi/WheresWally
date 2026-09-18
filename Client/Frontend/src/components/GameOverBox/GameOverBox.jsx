@@ -3,43 +3,19 @@ import styles from "./GameOverBox.module.css"
 
 function GameOverBox({ x, y }) {
     const dialogRef = useRef();
-    const [time, setTime] = useState(null);
 
-    useEffect(() => {
-        async function getCookie() {
-            try {
-                const res = await fetch(`${import.meta.env.VITE_API_PORT}/start`, {
-                method: "GET",
-                headers: { "content-type": "application/json", },
-                credentials: "include",
-            });
-            } catch(err) {
-                console.log(err);
-            }
-        }
-        getCookie();
-    }, []);
+    function msToTime(duration) {
+        let milliseconds = Math.floor((duration % 1000) / 100),
+            seconds = Math.floor((duration / 1000) % 60),
+            minutes = Math.floor((duration / (1000 * 60)) % 60),
+            hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-    useEffect(() => {
-        async function getTime() {
-            try {
-                const res = await fetch(`${import.meta.env.VITE_API_PORT}/time`, {
-                method: "GET",
-                headers: { "content-type": "application/json", },
-                credentials: "include",
-            });
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-            const data = await res.json();
-            setTime(data.time);
-            } catch(err) {
-                console.log(err);
-            }
-        }
-        getTime();
-    }, []);
+        return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    }
 
     useEffect(() => {
         dialogRef.current.showModal();
@@ -49,7 +25,7 @@ function GameOverBox({ x, y }) {
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
                 <form onSubmit>
-                    <h1>Well done! You found everyone in {time}</h1>
+                    <h1>Well done! You found everyone in </h1>
                     <h2>Add your name to the leaderboard:</h2>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name"/>

@@ -6,7 +6,7 @@ import Error from "../Error/Error";
 function GameOverBox({ x, y, time }) {
     const dialogRef = useRef();
     const [name, setName] = useState('');
-    const [errors, setErrors] = ([]);
+    const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
     function msToTime(duration) {
@@ -42,9 +42,6 @@ function GameOverBox({ x, y, time }) {
             credentials: "include",
             body: JSON.stringify(userObj)
         });
-        if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-        }
         const data = await res.json();
         if (data.msg) {
             console.log(data.msg);
@@ -68,6 +65,15 @@ function GameOverBox({ x, y, time }) {
                     <button type="submit">Save score</button>
                     <button type="button">Go home without saving</button>
                 </form>
+                {errors.length > 0 && 
+                    <>
+                        <ul>
+                            {errors.map((error, index) => (
+                                    <li key={index}><Error error={error} /></li>
+                                ))}
+                        </ul>
+                    </>
+                }
             </dialog>
         </div>
     )

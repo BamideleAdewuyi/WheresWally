@@ -1,5 +1,7 @@
 const db = require("../db/queries");
 const jwt = require('jsonwebtoken');
+const { validationResult, matchedData } = require("express-validator");
+const validateUser = require("../validators/userValidator");
 
 async function allUsersGet(req, res) {
     const users = await db.findAllUsers();

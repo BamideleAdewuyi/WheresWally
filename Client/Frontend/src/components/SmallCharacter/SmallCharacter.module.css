@@ -17,3 +17,9 @@
     font-size: small;
     text-align: center;
 }
+
+.tick {
+    position: absolute;
+    width: 3em;
+    height: 3em;
+}

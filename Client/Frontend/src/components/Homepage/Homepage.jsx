@@ -9,7 +9,7 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 import styles from "./Homepage.module.css";
 
 function Homepage() {
-    const [users, setUsers] = useState(null);
+    const [users, setUsers] = useState([]);
 
     const characters = [
         {   

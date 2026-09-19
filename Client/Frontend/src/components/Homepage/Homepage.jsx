@@ -59,6 +59,7 @@ function Homepage() {
                 ))}
             </div>
             <Link to="/play">Start Game</Link>
+            <h3>Leaderboard</h3>
             <Leaderboard users={users}/>
         </div>
     )

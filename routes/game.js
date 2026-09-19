@@ -17,7 +17,7 @@ gameRouter.get("/start", function (req, res, next) {
 
     const token = jwt.sign(gameObj, process.env.JWT_SECRET);
 
-    res.cookie("gameCookie", token, { httpOnly: true, secure: true, sameSite: 'lax' });
+    res.cookie("gameCookie", token, { httpOnly: true, secure: true, sameSite: 'none' });
     return res.send("Cookie set");
 });
 

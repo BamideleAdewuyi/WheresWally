@@ -16,6 +16,7 @@ function Game() {
     const [yGuess, setYGuess] = useState(null);
     const [time, setTime] = useState(null);
     const [characters, setCharacters] = useState([]);
+    const [highScore, setHighScore] = useState(null);
 
     useEffect(() => {
         async function getCookie() {
@@ -111,6 +112,24 @@ function Game() {
         } 
     };
 
+    useEffect(() => {
+        async function getHighScore() {
+            try {
+                const res = await fetch(`${import.meta.env.VITE_API_PORT}/highScore`, {
+                method: "GET",
+                headers: { "content-type": "application/json", },
+                credentials: "include",
+            });
+            const data = await res.json();
+            console.log(data)
+            setHighScore(data.highScore);
+            } catch(err) {
+                console.log(err);
+            }
+        }
+        getHighScore();
+    }, []);
+
     function closeBox() {
         setOpen(false);
     };
@@ -125,7 +144,7 @@ function Game() {
                 <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn} characters={characters}/>
                 <GuessResultBox open={openGuessResultBox} x={boxPosition.x} y={boxPosition.y} closeBox={closeGuessResultBox} character={guess}/>
                 {gameOver &&
-                    <GameOverBox x={boxPosition.x} y={boxPosition.y} time={time}/>
+                    <GameOverBox x={boxPosition.x} y={boxPosition.y} time={time} highScore={highScore}/>
                 }
             </div>
         </div>

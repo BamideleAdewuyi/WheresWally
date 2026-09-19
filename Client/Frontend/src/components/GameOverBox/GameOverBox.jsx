@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import styles from "./GameOverBox.module.css"
 import Error from "../Error/Error";
 
-function GameOverBox({ x, y, time }) {
+function GameOverBox({ x, y, time, highScore }) {
     const dialogRef = useRef();
     const [name, setName] = useState('');
     const [errors, setErrors] = useState([]);
@@ -58,6 +58,9 @@ function GameOverBox({ x, y, time }) {
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
                 <form onSubmit={addUser}>
+                    {highScore > time && 
+                    <h1>New High Score!</h1>
+                    }
                     <h1>Well done! You found everyone in {formattedTime}</h1>
                     <h2>Add your name to the leaderboard:</h2>
                     <label htmlFor="name">Name</label>

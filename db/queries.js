@@ -14,7 +14,7 @@ async function findHighScore() {
         },
     });
 
-    const highScore = highScorer.time;
+    const highScore = highScorer._min.time;
     return highScore;
 };
 

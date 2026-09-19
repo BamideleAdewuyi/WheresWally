@@ -2,7 +2,14 @@
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     width: 20em;
     height: 15em;
     position: absolute;
+}
+
+.GameOverBoxForm {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }

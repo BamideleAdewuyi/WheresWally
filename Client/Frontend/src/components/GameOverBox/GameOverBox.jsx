@@ -61,7 +61,7 @@ function GameOverBox({ x, y, time, highScore }) {
     return(
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
-                <form onSubmit={addUser}>
+                <form onSubmit={addUser} className={styles.GameOverBoxForm}>
                     {highScore > time && 
                     <h1>New High Score!</h1>
                     }

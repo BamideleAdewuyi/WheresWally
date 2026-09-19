@@ -121,7 +121,7 @@ function Game() {
                 credentials: "include",
             });
             const data = await res.json();
-            console.log(data)
+
             setHighScore(data.highScore);
             } catch(err) {
                 console.log(err);

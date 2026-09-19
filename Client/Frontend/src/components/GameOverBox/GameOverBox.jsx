@@ -54,6 +54,10 @@ function GameOverBox({ x, y, time, highScore }) {
         }
     }
 
+    function goHome() {
+        navigate("/");
+    }
+
     return(
         <div className={styles.GameOverBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GameOverBoxDialog}>
@@ -66,7 +70,7 @@ function GameOverBox({ x, y, time, highScore }) {
                     <label htmlFor="name">Name</label>
                     <input value={name} type="text" id="name" name="name" onChange={e => setName(e.target.value)}/>
                     <button type="submit">Save score</button>
-                    <button type="button">Go home without saving</button>
+                    <button type="button" onClick={goHome}>Go home without saving</button>
                 </form>
                 {errors.length > 0 && 
                     <>

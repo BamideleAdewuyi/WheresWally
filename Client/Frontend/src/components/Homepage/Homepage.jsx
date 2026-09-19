@@ -9,6 +9,8 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 import styles from "./Homepage.module.css";
 
 function Homepage() {
+    const [users, setUsers] = useState(null);
+
     const characters = [
         {   
             name: "Wally",
@@ -26,6 +28,25 @@ function Homepage() {
             name: "Whitebeard",
             src: Whitebeard,
         }];
+    
+    useEffect(() => {
+        async function getUsers() {
+            try {
+                const res = await fetch(`${import.meta.env.VITE_API_PORT}/allUsers`, {
+                method: "GET",
+                headers: { "content-type": "application/json", },
+                credentials: "include",
+            });
+
+            const data = await res.json();
+            setUsers(data.users);
+            } catch(err) {
+                console.log(err);
+            }
+        }
+        getUsers();
+    }, []);
+
     return(
         <div className={styles.homepageContainer}>
             <h1>Where's Wally?</h1>
@@ -38,6 +59,7 @@ function Homepage() {
                 ))}
             </div>
             <Link to="/play">Start Game</Link>
+            <Leaderboard users={users}/>
         </div>
     )
 }

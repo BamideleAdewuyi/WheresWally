@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
 const app = express();
+app.enable('trust proxy');
 
 require('dotenv/config');
 

@@ -15,6 +15,7 @@ function Game() {
     const [xGuess, setXGuess] = useState(null);
     const [yGuess, setYGuess] = useState(null);
     const [time, setTime] = useState(null);
+    const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
         async function getCookie() {
@@ -93,6 +94,7 @@ function Game() {
                 closeBox();
                 setGuess(data.character.name);
                 setGameOver(data.sessionData.gameOver);
+                setCharacters(data.sessionData.characters);
                 if (data.sessionData.gameOver) {
                     setTime(data.sessionData.time);
                 }
@@ -120,7 +122,7 @@ function Game() {
     return(
         <div className={styles.screenWrapper}>
             <div onClick={!openGuessResultBox ? (e) => openDialog(e) : null} ref={gameContainerRef} className={styles.gameContainer}>
-                <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn}/>
+                <TargetBox open={open} closeBox={closeBox} x={boxPosition.x} y={boxPosition.y} handleClick={takeTurn} characters={characters}/>
                 <GuessResultBox open={openGuessResultBox} x={boxPosition.x} y={boxPosition.y} closeBox={closeGuessResultBox} character={guess}/>
                 {gameOver &&
                     <GameOverBox x={boxPosition.x} y={boxPosition.y} time={time}/>

@@ -1,7 +1,9 @@
 const prisma = require("../lib/prisma.js");
 
 async function findAllUsers() {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+        orderBy: { time: 'asc' },
+    });
     return users;
 };
 

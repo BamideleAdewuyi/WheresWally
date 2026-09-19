@@ -4,8 +4,8 @@ import UserScore from "../UserScore/UserScore";
 function Leaderboard({ users }) {
     return(
         <div className={styles.leaderboardContainer}>
-            <h3>Name</h3>
-            <h3>Time</h3>
+            <h3 className={styles.leaderboardHeader}>Name</h3>
+            <h3 className={styles.leaderboardHeader}>Time</h3>
             {users.length > 0 && 
                 <>
                     {users.map((user, index) => (

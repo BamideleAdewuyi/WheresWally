@@ -1,5 +1,13 @@
 .leaderboardContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
+    padding: 0;
+    outline: 1px solid black;
+    width: 20em;
+}
+
+.leaderboardHeader {
+    text-align: center;
+    outline: 1px solid black;
 }

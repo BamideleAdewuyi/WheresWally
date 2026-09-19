@@ -16,8 +16,8 @@ function UserScore({ name, time }) {
     const formattedTime = msToTime(Number(time));
     return(
         <div className={styles.userScoreContainer}>
-            <p>{name}</p>
-            <p>{formattedTime}</p>
+            <p className={styles.userScoreName}>{name}</p>
+            <p className={styles.userScoreTime}>{formattedTime}</p>
         </div>
     )
 }

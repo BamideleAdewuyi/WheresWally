@@ -18,10 +18,10 @@ function GuessResultBox({ open, x, y, closeBox, character }) {
         <div className={styles.GuessResultBoxWrapper}>
             <dialog style={{left: x, top: y}} ref={dialogRef} className={styles.GuessResultBoxDialog}>
                 {character ? 
-                    <p>{character} found!</p> :
-                    <p>Wrong!</p>
+                    <p className={styles.GuessResultBoxResult}>{character} found!</p> :
+                    <p className={styles.GuessResultBoxResult}>Wrong!</p>
                 }
-                <button onClick={() => closeBox()} type="button">X</button>
+                <button className={styles.GuessResultBoxButton} onClick={() => closeBox()} type="button">X</button>
             </dialog>
         </div>
     )

@@ -2,7 +2,15 @@
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 10em;
     height: 10em;
     position: absolute;
+}
+
+.GuessResultBoxButton {
+    width: 4em;
+    height: 4em;
 }
